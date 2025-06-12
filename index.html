@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecionando para o Typeform</title>
+</head>
+<body>
+  <p>Gerando CPF e redirecionando...</p>
+
+  <script>
+    // URL da sua API que gera o CPF
+    const apiURL = 'https://cpf-alfanumerico-1.onrender.com/generate-cpf';
+
+    // URL base do seu formulário Typeform
+    const typeformURL = 'https://form.typeform.com/to/HxB64BvF';
+
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        const cpf = data.cpf;
+        // Monta a URL do Typeform com o CPF no parâmetro 'cpf' (exemplo)
+        const redirectURL = `${typeformURL}?cpf=${encodeURIComponent(cpf)}`;
+        // Redireciona o usuário
+        window.location.href = redirectURL;
+      })
+      .catch(error => {
+        console.error('Erro ao buscar CPF:', error);
+        document.body.innerHTML = '<p>Erro ao gerar CPF. Tente novamente mais tarde.</p>';
+      });
+  </script>
+</body>
+</html>
