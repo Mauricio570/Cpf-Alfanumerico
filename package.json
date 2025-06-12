@@ -1,0 +1,12 @@
+{
+    "name": "cpf-alfanumerico",
+    "version": "1.0.0",
+    "main": "cpfGenerator.js",
+    "scripts": {
+      "start": "node cpfGenerator.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+  
